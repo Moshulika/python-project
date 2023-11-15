@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <script type="text/javascript" src="/eel.js"></script>
+  <script type="text/javascript" src="javascript.js"></script>
+
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </noscript>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+
+  <script defer src="https://kit.fontawesome.com/ef590a2fdb.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <title>Generated codes</title>
+</head>
+<body style="background-image: url('wave_background.jpg')">
+
+
+<div class="container list-title animate__animated animate__fadeIn">
+
+  <div class="row">
+      <h1 style="color:white;">Your generated codes: </h1>
+      <h5 id="number-of-codes" style="color:white;">There are 55 codes</h5>
+  </div>
+
+  <div class="row">
+
+    <div class="codes-container" id="code-container"></div>
+
+  </div>
+
+  <div class="row">
+    <div class="back-button-container">
+      <button class="normal-btn" onclick="window.location.href='index.html'"><i class="fa-solid fa-arrow-left"></i> Main menu</button>
+      <button class="normal-btn" onclick="window.location.href='code.html'"><i class="fa-solid fa-qrcode"></i> Generate new code</button>
+    </div>
+  </div>
+
+  <script>
+
+    function createThing(id, time)
+    {
+
+      let container = document.getElementById("code-container");
+
+      let wrapper = document.createElement("div");
+      wrapper.classList.add("code");
+
+      let h5 = document.createElement('h5');
+      h5.textContent = id;
+
+      let tc = document.createElement('h5');
+      tc.textContent = "Time created: " + time;
+
+      let button = document.createElement('button');
+      button.classList.add('normal-btn');
+      button.textContent = "Reveal code";
+
+      button.addEventListener("click", (event) =>
+      {
+
+        let modal = new bootstrap.Modal(document.getElementById("zoom"));
+        let qr = document.getElementById('modal-qr');
+        qr.src = id + ".png";
+        modal.show();
+
+      });
+
+      let hr = document.createElement('hr');
+
+      wrapper.append(h5);
+      wrapper.append(tc);
+      wrapper.append(button);
+
+      container.append(wrapper)
+      container.append(hr);
+    }
+
+    async function loadAllCodes()
+    {
+
+      let nr = await eel.getQRNumbers()();
+      let codes =  await eel.getQRs()();
+
+      document.getElementById("number-of-codes").textContent = "There are " + nr + " codes";
+
+      for(var i = 0; i < nr; i++)
+      {
+        createThing(codes[i]['id'], codes[i]['created']);
+      }
+
+    }
+
+    loadAllCodes();
+
+  </script>
+
+</div>
+
+<div class="modal animate__animated animate__zoomIn" id="zoom" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Vizualizare cod QR</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container" id="modal-container">
+
+          <img id="modal-qr" src="favicon.ico">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

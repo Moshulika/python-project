@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="javascript.js"></script>
+
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </noscript>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <script defer src="https://kit.fontawesome.com/ef590a2fdb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <script defer src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <title>QR Code generator</title>
+</head>
+
+<body style="background-image: url('wave_background.jpg')">
+
+<div class="row main-row">
+
+    <div class="col-8">
+
+        <div class="main animate__animated animate__fadeIn">
+
+        <div class="title-container">
+
+            <div class="img-container">
+                <img class="dummy-qr" src="img/frame.png">
+            </div>
+
+            <h1 class="title">Welcome</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-3"></div>
+
+            <div class="col-6">
+
+            <form id="searchbar" onsubmit="loginToGenerate()" autocomplete="off">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">User</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" required>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" class="normal-btn" onclick="loginToGenerate()"><i class="fa-solid fa-qrcode"></i> Generate</button>
+                    <button class="normal-btn" onclick="openScanner()"><i class="fa-solid fa-camera"></i> Open Scanner</button>
+                </div>
+
+            </form>
+
+            </div>
+
+            <div class="col-3"></div>
+
+        </div>
+
+            <div class="info-container">
+                <p class="info">In order to generate an access code, simply click on the button above and you will be redirected to the code<p/>
+            </div>
+
+
+            <p class="fake">In order to generate an access code, simply click on the button above and you will be redirected to the code<p/>
+
+        </div>
+
+    </div>
+
+    <div class="col-4">
+
+        <div class="info-area">
+
+            <div class="row">
+
+                <div class="container code-area-container">
+
+                    <div class="wrapper-index">
+
+                        <h1 style="color:white;">Log in, please!</h1>
+                        <h5 style="color:white;">How to use it?</h5>
+                        <br>
+                        <br>
+                        <ul style="color:white;">
+                            <li>You need to have an already created account</li>
+                            <li>Input your username and password</li>
+                            <li>Click on 'Generate'</li>
+                            <li>Enjoy your code or see all generated codes</li>
+                        </ul>
+
+                        <h1 class="made-by" style="color:white;">Made by:</h1>
+
+                        <div>
+
+                            <img class="author-photo" src="img/IMG_20201022_184105_189.jpg">
+                            <img class="author-photo" src="img/IMG_20201022_184105_189.jpg">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
